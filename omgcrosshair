@@ -1,0 +1,14 @@
+local d = Drawing.new("Circle")
+d.Radius = 10
+d.Filled = true
+d.Visible = true
+
+local timeElapsed = 0
+local hueSpeed = 0.5
+
+game:GetService("RunService").RenderStepped:Connect(function(dt)
+    timeElapsed = timeElapsed + dt
+    local hue = (timeElapsed * hueSpeed) % 1
+    d.Color = Color3.fromHSV(hue, 1, 1)
+    d.Position = workspace.CurrentCamera.ViewportSize / 2
+end)
